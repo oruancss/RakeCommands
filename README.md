@@ -4,5 +4,5 @@
 We're still in developing, if you're intending to use, use at your own risk.
 
 ```lua
-loadstring(game:HttpGet(""))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/oruancss/RakeCommands/main/Source.lua", true))()
 ```
