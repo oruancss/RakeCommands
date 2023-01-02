@@ -85,11 +85,11 @@ end
 -- // Base dos comandos
 game:GetService("Players").LocalPlayer.Chatted:Connect(function(HeraComando)
 	if (string.lower(HeraComando) == ";door") then -- Comando de abrir/fechar a porta.
-        game:GetService("Workspace").Map.SafeHouse.Door.RemoteEvent:FireServer("Door")
+        	game:GetService("Workspace").Map.SafeHouse.Door.RemoteEvent:FireServer("Door")
 	elseif (string.lower(HeraComando) == ";lights") then -- Comando de acender/apagar luz.
 		game:GetService("Workspace").Map.SafeHouse.Door.RemoteEvent:FireServer("Light")
 	elseif (string.lower(HeraComando) == ";tlights") then -- Comando de acender/apagar luz da torre.
-        game:GetService("Workspace").Map.ObservationTower.Lights.RemoteEvent:FireServer("Light")
+        	game:GetService("Workspace").Map.ObservationTower.Lights.RemoteEvent:FireServer("Light")
 	elseif (string.lower(HeraComando) == ";nofall") then -- Comando que tira o dano de queda.
 		game:GetService("ReplicatedStorage")["FD_Event"]:Destroy()
 	elseif (string.lower(HeraComando) == ";infstamina") then -- Comando que deixa a stamina infinita.
