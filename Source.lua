@@ -77,7 +77,7 @@ end
 function AdicionaScrapESP()
 	for _,HeraScrap in pairs(ScrapFolder:GetChildren()) do 
 		HeraScrap.ChildAdded:Connect(function(objeto)
-			CriaESP(objeto:WaitForChild("Scrap", 138, 43, 226, 18))
+			CriaESP(ColetaScraps():WaitForChild("Scrap", 138, 43, 226, 18))
 		end)
 	end
 end
