@@ -49,24 +49,14 @@ function LoopVelocidade()
 	end)
 end
 
-function ColetaScraps()
-		local Scraps = {}
-		for _,HeraScrap in pairs(ScrapFolder:GetChildren()) do 
-			if HeraScrap:FindFirstChildOfClass("Model") and HeraScrap:FindFirstChildOfClass("Model"):FindFirstChild("Scrap")  then
-				table.insert(Scraps, HeraScrap:FindFirstChildOfClass("Model")["Scrap"])
-			end
-		end
-	return Scraps
-end
-
-function CriaESP(parent, r, g, b, fontSize)
+function CriaESP(texto, r, g, b, fontSize)
 	local Herades = Instance.new("BillboardGui", parent)
 	Herades.Name = ("HeraGUI")
 	Herades.AlwaysOnTop = true
 	Herades.ExtentsOffset = Vector3.new(0, 0, 0)
 	Herades.Size = UDim2.new(1, 0, 1, 0)
 	local nam = Instance.new("TextLabel", Herades)
-	nam.Text = parent.Parent.Name
+	nam.Text = texto
 	nam.BackgroundTransparency = 1
 	nam.TextSize = fontSize
 	nam.Font = Enum.Font.GothamSemibold
@@ -75,9 +65,9 @@ function CriaESP(parent, r, g, b, fontSize)
 end
 
 function AdicionaScrapESP()
-	for _,HeraScrap in pairs(ScrapFolder:GetChildren()) do 
+	for _,HeraScrap in pairs(game:GetService("Workspace").Filter.ScrapSpawns:GetDescendants()) do 
 		HeraScrap.ChildAdded:Connect(function(objeto)
-			CriaESP(ColetaScraps():WaitForChild("Scrap", 138, 43, 226, 18))
+			CriaESP(objeto:WaitForChild("Scrap", 128, 0, 128, 18))
 		end)
 	end
 end
@@ -131,8 +121,8 @@ game:GetService("Players").LocalPlayer.Chatted:Connect(function(HeraComando)
 		_G.LoopTower = false
 	end
 	if (string.lower(HeraComando) == ";scrapesp") then -- Comando de ESP para scraps.
-		for _,Scrap in pairs(ColetaScraps()) do 
-			if not Scrap:FindFirstChild("Isguied") then
+		for _,HeraScrap in pairs(game:GetService("Workspace").Filter.ScrapSpawns:GetDescendants()) do
+			if HeraScrap:IsA("Model") then
 				AdicionaScrapESP()
 			end
 		end
