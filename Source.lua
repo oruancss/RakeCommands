@@ -66,8 +66,8 @@ end
 
 function AdicionaScrapESP()
 	for _,HeraScrap in pairs(game:GetService("Workspace").Filter.ScrapSpawns:GetDescendants()) do 
-		HeraScrap.ChildAdded:Connect(function(objeto)
-			CriaESP(objeto:WaitForChild("Scrap") "Scrap", 128, 0, 128, 18))
+		HeraScrap.ChildAdded:Connect(function()
+			CriaESP("Scrap", 128, 0, 128, 18))
 		end)
 	end
 end
