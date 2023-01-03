@@ -115,7 +115,7 @@ game:GetService("Players").LocalPlayer.Chatted:Connect(function(HeraComando)
 	if (string.lower(HeraComando) == ";scrapesp") then -- Comando de ESP para scraps.
 		for _,HeraScrap in pairs(game:GetService("Workspace").Filter.ScrapSpawns:GetDescendants()) do
 			if HeraScrap:IsA("Model") then
-				for _,HS in pairs(HeraScraps:GetDescendants()) do
+				for _,HS in pairs(HeraScrap:GetDescendants()) do
 					if HS.Name == "Scrap" then
 						CriaESP("Scrap", 128, 0, 128, 18)
 					end
