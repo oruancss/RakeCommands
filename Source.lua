@@ -64,14 +64,6 @@ function CriaESP(texto, r, g, b, fontSize)
 	nam.Size = UDim2.new(1, 0, 1, 0)
 end
 
-function AdicionaScrapESP()
-	for _,HeraScrap in pairs(game:GetService("Workspace").Filter.ScrapSpawns:GetDescendants()) do 
-		HeraScrap.ChildAdded:Connect(function()
-			CriaESP("Scrap", 128, 0, 128, 18))
-		end)
-	end
-end
-
 -- // Base dos comandos
 game:GetService("Players").LocalPlayer.Chatted:Connect(function(HeraComando)
 	if (string.lower(HeraComando) == ";door") then -- Comando de abrir/fechar a porta.
@@ -123,7 +115,11 @@ game:GetService("Players").LocalPlayer.Chatted:Connect(function(HeraComando)
 	if (string.lower(HeraComando) == ";scrapesp") then -- Comando de ESP para scraps.
 		for _,HeraScrap in pairs(game:GetService("Workspace").Filter.ScrapSpawns:GetDescendants()) do
 			if HeraScrap:IsA("Model") then
-				AdicionaScrapESP()
+				for _,HS in pairs(HeraScraps:GetDescendants()) do
+					if HS.Name == "Scrap" then
+						CriaESP("Scrap", 128, 0, 128, 18)
+					end
+				end
 			end
 		end
 	end
